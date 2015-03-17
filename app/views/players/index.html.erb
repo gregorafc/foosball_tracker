@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Avatar</th>
       <th>First name</th>
       <th>Last name</th>
     </tr>
@@ -12,6 +13,7 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
+        <td><%= image_tag player.avatar.url(:thumb) %></td>
         <td><%= player.firstname %></td>
         <td><%= player.lastname %></td>
         <td><%= link_to 'Show', player %></td>

@@ -2,4 +2,5 @@
 
 <p>First name: <%= @player.firstname %></p>
 <p>Last name: <%= @player.lastname %></p>
+<p>Avatar: <%= image_tag @player.avatar.url %></p>
 <p><%= link_to 'Back', players_path %></p>
