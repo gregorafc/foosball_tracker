@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Player, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Player do
+  context 'validations' do
+    it { should validate_presence_of :firstname }
+    it { should validate_presence_of :lastname }
+  end
+  
 end
