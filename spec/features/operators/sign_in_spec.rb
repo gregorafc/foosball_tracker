@@ -11,4 +11,5 @@ feature 'Sign in' do
     signin('operator', 'test1234')
     expect(page).to have_content 'Logged in!'
   end
+
 end
