@@ -35,7 +35,7 @@ class PlayersController < ApplicationController
 
   def destroy
     @player.destroy
-    redirect_to players_path
+    redirect_to players_path, notice: 'Player was succesfully deleted.'
   end
 
   private

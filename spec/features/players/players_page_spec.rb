@@ -5,7 +5,7 @@ feature 'Visit players page' do
   describe 'normal visitor' do
     before :each do
        10.times do
-       FactoryGirl.create(:player)
+        FactoryGirl.create(:player)
        end
        visit players_path
     end
@@ -35,7 +35,39 @@ feature 'Visit players page' do
       10.times do
        FactoryGirl.create(:player)
       end
-    visit players_path
+      operator = FactoryGirl.create(:operator)
+      signin('operator', 'test1234')
+    end
+    
+    scenario 'players page' do
+      expect(page).to have_content 'Logged in as'
+    end
+
+    scenario 'edit player' do
+      click_link 'Edit', match: :first
+      expect(page).to have_content 'Update player'
+
+      fill_in 'Firstname', with: 'John'
+      fill_in 'Lastname', with: 'Doe'
+      attach_file('Avatar', File.join(Rails.root, '/spec/support/upload/ava.png'))
+      click_button 'Update Player'
+      expect(page).to have_content 'Player was succesfully updated.'
+    end
+
+    scenario 'add new player' do
+      click_link 'New player'
+      expect(page).to have_content 'New player'
+
+      fill_in 'Firstname', with: 'John'
+      fill_in 'Lastname', with: 'Doe'
+      attach_file('Avatar', File.join(Rails.root, '/spec/support/upload/ava.png'))
+      click_button 'Create Player'
+      expect(page).to have_content 'Player was succesfully created.'
+    end
+
+    scenario 'delete player' do
+      click_link 'Delete', match: :first
+      expect(page).to have_content 'Player was succesfully deleted.'
     end
 
   end
