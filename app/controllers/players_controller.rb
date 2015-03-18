@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_filter :set_player, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, only: [:new, :edit, :destroy ]
 
   def index
     @players = Player.all
