@@ -38,6 +38,10 @@ class PlayersController < ApplicationController
     redirect_to players_path, notice: 'Player was succesfully deleted.'
   end
 
+  def rank
+    @players = Player.rating_table
+  end
+
   private
 
   def set_player

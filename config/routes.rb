@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root 'players#index'
+  root 'players#rank'
 
-  resources :players
+  resources :players do
+    get 'rank', on: :member
+  end
   resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.

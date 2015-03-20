@@ -1,0 +1,30 @@
+<h1>Ranking</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Rating</th>
+      <th>Match played</th>
+      <th>Goals</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% n = 1 %>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= p "#{n}" %></td>
+        <td><%= player.firstname %></td>
+        <td><%= player.lastname %></td>
+        <td><%= player.rating %></td>
+        <td><%= player.matches.count %></td>
+        <td><%= player.goals %></td>
+        <td><%= player.points %></td>
+        <% n = n + 1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
