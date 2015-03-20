@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :match do
-    data ""
-home_player nil
-away_player nil
-home_player_win false
-looser_score 1
+    match_date { Faker::Date.backward(50) }
+    association :home_player, factory: :player
+    association :away_player, factory: :player
+    home_player_win { rand(2) == 1 }
+    looser_score { rand(10) }
   end
 
 end

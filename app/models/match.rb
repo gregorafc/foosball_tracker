@@ -7,4 +7,6 @@ class Match < ActiveRecord::Base
             :looser_score,
             :match_date, presence: true
   validates :looser_score, inclusion: { in: 0..9 }
+
+
 end

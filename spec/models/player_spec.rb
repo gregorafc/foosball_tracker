@@ -15,4 +15,9 @@ describe Player do
     it { should have_many(:away_matches).class_name('Match') }
   end
   
+  it 'factory well' do
+    match = FactoryGirl.create(:match)
+    expect(match).to be_valid
+    byebug
+  end
 end

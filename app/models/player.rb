@@ -15,6 +15,8 @@ class Player < ActiveRecord::Base
   has_many :away_wins, -> { where('home_player_win = ?', false) }, foreign_key: :away_player_id, class_name: 'Match'
   has_many :away_loses, -> { where('home_player_win =?', true) }, foreign_key: :away_player_id, class_name: 'Match'
 
+  scope :rating_table, -> { Player.order(rating: :desc) }
+
   def matches
     home_matches + away_matches
   end
@@ -46,6 +48,8 @@ class Player < ActiveRecord::Base
   def rating
     unless matches == []
       (points*0.7 + goals*0.2 - matches.count*0.1 ).round(2)
+    else
+      0
     end
   end
 
