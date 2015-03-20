@@ -8,7 +8,7 @@ Operator.create!( login: Rails.application.secrets.login,
 10.times do
   Player.create!(firstname: Faker::Name.first_name,
                 lastname: Faker::Name.last_name,
-                avatar: Faker::Avatar.image )
+                 avatar: Faker::Avatar.image )
   puts 'Player'
 end
 

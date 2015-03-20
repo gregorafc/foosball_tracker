@@ -38,19 +38,20 @@ class Player < ActiveRecord::Base
   end
 
   def goals
-    goals_by_win + goals_by_lose
+    if goals_by_win && goals_by_lose
+      goals_by_win + goals_by_lose
+    else
+      goals_by_win || goals_by_lose
+    end
   end
 
   def points
     wins.count * 3
   end
 
-  def rating
-    unless matches == []
-      (points*0.7 + goals*0.2 - matches.count*0.1 ).round(2)
-    else
-      0
-    end
+  def rate
+      self.rating = (points*0.7 + goals*0.1 - matches.count*0.1 + avg_opp_rating*0.1).round(2)
+      self.save
   end
 
   def avg_opp_rating
