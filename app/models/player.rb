@@ -17,6 +17,10 @@ class Player < ActiveRecord::Base
 
   scope :rating_table, -> { Player.order(rating: :desc) }
 
+  def fullname
+    "#{firstname} #{lastname}"
+  end
+
   def matches
     home_matches + away_matches
   end
