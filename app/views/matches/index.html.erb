@@ -1,0 +1,24 @@
+<h1>Matches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Match date</th>
+      <th>Home player</th>
+      <th>Away player</th>
+      <th>#</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.match_date %></td>
+        <td><%= match.home_player.fullname %></td>
+        <td><%= match.away_player.fullname %></td>
+        <td><%= match_result_home(match) %></td>
+        <td><%= match_result_away(match) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
