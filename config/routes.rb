@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'players#rank'
 
   resources :players do
-    get 'rank', on: :member
+    get 'rank', on: :collection
   end
   resources :sessions
   resources :matches
