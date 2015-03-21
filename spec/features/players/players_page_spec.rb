@@ -37,6 +37,7 @@ feature 'Visit players page' do
       end
       operator = FactoryGirl.create(:operator)
       signin('operator', 'test1234')
+      visit players_path
     end
     
     scenario 'players page' do
