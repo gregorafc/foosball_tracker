@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
 
   def index
-    @matches = Match.all
+    @matches = Match.all.order('match_date desc')
   end
 
   def new
