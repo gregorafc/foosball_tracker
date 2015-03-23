@@ -7,6 +7,7 @@ class Match < ActiveRecord::Base
             :looser_score,
             :match_date, presence: true
   validates :looser_score, inclusion: { in: 0..9 }
+  validate :home_away
 
   after_save :rate_update
 
@@ -14,4 +15,13 @@ class Match < ActiveRecord::Base
     self.home_player.rate
     self.away_player.rate
   end
+
+
+ 
+  def home_away 
+    if self.home_player_id == self.away_player_id
+      errors.add( :base, 'Same player')
+    end
+  end
+
 end
