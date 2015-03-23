@@ -1,6 +1,6 @@
-<%= form_for(@match) do |f| %>
+<%= form_for(@match, html: { class: 'form-horizontal' } ) do |f| %>
   <% if @match.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-dismissible alert-danger">
       <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
 
       <ul>
@@ -11,30 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :match_date %><br>
-    <%= f.date_field :match_date %>
+  <div class="form-group">
+    <%= f.label :match_date, { class: 'col-sm-2 control-label' } %>
+    <div class='col-sm-4'>
+      <%= f.date_field :match_date, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :home_player_id %><br>
-    <%= f.collection_select(:home_player_id, Player.all, :id, :lastname) %>
+  <div class="form-group">
+    <%= f.label :home_player_id, { class: 'col-sm-2 control-label' } %>
+    <div class='col-sm-4'>
+      <%= f.collection_select(:home_player_id, Player.all, :id, :lastname,
+                            {}, class: 'form-control')%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :away_player_id %><br>
-    <%= f.collection_select(:away_player_id, Player.all, :id, :lastname) %>
+  <div class="form-group">
+    <%= f.label :away_player_id, { class: 'col-sm-2 control-label' } %>
+    <div class='col-sm-4'>
+    <%= f.collection_select(:away_player_id, Player.all, :id, :lastname,
+                            {}, class: 'form-control') %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :home_player_win, 'Who is the winner?' %>
-    <%= f.label :home_player_win_true, 'Home player' %>
-    <%= f.radio_button(:home_player_win, true) %>
-    <%= f.label :home_player_win_false, 'Away player' %>
-    <%= f.radio_button(:home_player_win, false) %><br>
+  <div class="form-group">
+    <%= f.label :home_player_win, 'Who is the winner?', { class: 'col-sm-2 control-label' } %>
+      <div class='col-sm-4'>
+        <div class='col-sm-4'>
+          <%= f.label :home_player_win_true, 'Home player' %>
+          <%= f.radio_button(:home_player_win, true) %>
+        </div>
+        <div class='col-sm-4'>
+          <%= f.label :home_player_win_false, 'Away player' %>
+          <%= f.radio_button(:home_player_win, false) %>
+        </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :looser_score %>
-    <%= f.number_field :looser_score %>
+  <div class="form-group">
+    <%= f.label :looser_score, { class: 'col-sm-2 control-label' } %>
+    <div class='col-sm-4'>
+      <%= f.number_field :looser_score, class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit(class: 'btn btn-primary') %>
+    </div>
   </div>
 <% end %>
