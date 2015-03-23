@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+  before_filter :authorize, only: [:new]
 
   def index
     @matches = Match.all.order('match_date desc')

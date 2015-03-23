@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authorize
-    redirect_to root_path, alert: 'No authorization' if current_operator.nil?
+    redirect_to :back, alert: 'No authorization' if current_operator.nil?
   end
 
   private
