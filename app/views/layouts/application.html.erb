@@ -7,20 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-  <%= notice %>
-  <%= alert %>
-</div>
+  <div class='container-fluid'>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class='navbar-header'>
+          <%= link_to 'Foosball Tracker', root_path, class: 'navbar-brand' %>
+        </div>
+          <div class='collapse navbar-collapse'>
+            <%= render 'layouts/navigation' %>
+            <ul class='nav navbar-nav navbar-right'>
+              <% if current_operator %>
+                <li><a>Logged in as <strong><%= current_operator.login %></strong>.</a></li>
+                <li><%= link_to 'Log out', session_path('current'), method: 'delete' %></li>
+              <% else %>
+                <li><%= link_to 'Log in', new_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
 
-<div id='login-header'>
-  <% if current_operator %>
-    Logged in as <%= current_operator.login %>.
-    <%= link_to 'Log out', session_path('current'), method: 'delete' %>
-  <% else %>
-    <%= link_to 'Log in', new_session_path %>
-  <% end %>
-</div>
-<%= yield %>
+      </div>
+    </nav>
 
+
+    <div class='main-content'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div>
+            <% if notice %>
+              <p class='alert alert-dismissible alert-success'><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class='alert alert-dismissible alert-danger'><%= alert %></p>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
