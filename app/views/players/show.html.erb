@@ -1,6 +1,17 @@
-<h1>Player</h1>
+<div class='container'>
+  <div class='row'>
 
-<p>First name: <%= @player.firstname %></p>
-<p>Last name: <%= @player.lastname %></p>
-<p>Avatar: <%= image_tag @player.avatar.url %></p>
-<p><%= link_to 'Back', players_path %></p>
+    <div class='col-lg-6'>
+      <h1>Player</h1>
+
+      <p>First name: <%= @player.firstname %></p>
+      <p>Last name: <%= @player.lastname %></p>
+      <p>Avatar: <%= image_tag @player.avatar.url %></p>
+      <p><%= link_to 'Back', players_path %></p>
+    </div>
+    <div class='col-lg-6'>
+        <h1>Statistics</h1>
+        
+    </div>
+  </div>
+</div>
