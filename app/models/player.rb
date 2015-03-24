@@ -49,6 +49,10 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def goals_per_game
+    (goals / matches.count.to_f).round(2)
+  end
+
   def points
     wins.count * 3
   end

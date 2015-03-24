@@ -10,8 +10,87 @@
       <p><%= link_to 'Back', players_path %></p>
     </div>
     <div class='col-lg-6'>
-        <h1>Statistics</h1>
-        
+
+        <ul class='list-group'>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.rating %></span>
+          Rating
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.points %></span>
+          Points
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item'>
+            <span class='badge'><%= @player.wins.count %></span>
+            Match win
+          </li>
+          <li class='list-group-item'>
+            <span class='badge'><%= @player.loses.count %></span>
+            Match lost
+            </li>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.matches.count %></span>
+            Overall
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item'>
+            <span class='badge'><%= @player.goals_by_win %></span>
+            Goals when win
+          </li>
+          <li class='list-group-item'>
+            <span class='badge'><%= @player.goals_by_lose %></span>
+            Goals when lose
+            </li>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.goals %></span>
+            Overall
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.goals_per_game %></span>
+            Goals per game
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item'>
+            <span class='badge'><%=  %></span>
+            Goals lost when win
+          </li>
+          <li class='list-group-item'>
+            <span class='badge'><%=  %></span>
+            Goals lost when lose
+            </li>
+          <li class='list-group-item active'>
+            <span class='badge'><%=  %></span>
+            Overall
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item active'>
+            <span class='badge'><%=  %></span>
+            Goals lost per game
+          </li>
+        </ul>
+
+        <ul class='list-group'>
+          <li class='list-group-item active'>
+            <span class='badge'><%= @player.avg_opp_rating %></span>
+          Average opponent rating
+          </li>
+        </ul>
+
     </div>
   </div>
 </div>
