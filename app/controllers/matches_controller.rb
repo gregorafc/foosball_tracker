@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
   before_filter :authorize, only: [:new]
 
   def index
-    @matches = Match.all.order('match_date desc')
+    @matches = Match.paginate(:page => params[:page], :per_page => 10).order('match_date desc')
   end
 
   def new
