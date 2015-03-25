@@ -14,20 +14,20 @@
   <div class="form-group">
     <%= f.label :match_date, { class: 'col-sm-2 control-label' } %>
     <div class='col-sm-4'>
-      <%= f.date_field :match_date, class: 'form-control' %>
+      <%= f.date_field :match_date, :value => Time.now.strftime('%Y-%m-%d') ,class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :home_player_id, { class: 'col-sm-2 control-label' } %>
     <div class='col-sm-4'>
-      <%= f.collection_select(:home_player_id, Player.all, :id, :lastname,
+      <%= f.collection_select(:home_player_id, Player.all, :id, :fullname,
                             {}, class: 'form-control')%>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :away_player_id, { class: 'col-sm-2 control-label' } %>
     <div class='col-sm-4'>
-    <%= f.collection_select(:away_player_id, Player.all, :id, :lastname,
+    <%= f.collection_select(:away_player_id, Player.all, :id, :fullname,
                             {}, class: 'form-control') %>
     </div>
   </div>
