@@ -20,7 +20,7 @@
   <div class="form-group">
     <%= f.label :home_player_id, { class: 'col-sm-2 control-label' } %>
     <div class='col-sm-4'>
-      <%= f.collection_select(:home_player_id, Player.all, :id, :fullname,
+      <%= f.collection_select(:home_player_id, Player.active, :id, :fullname,
                             {}, class: 'form-control')%>
     </div>
   </div>

@@ -16,6 +16,7 @@ class Player < ActiveRecord::Base
   has_many :away_loses, -> { where('home_player_win =?', true) }, foreign_key: :away_player_id, class_name: 'Match'
 
   scope :rating_table, -> { Player.order(rating: :desc) }
+  scope :active, -> { Player.where('retire = ?', false) }
 
   def fullname
     "#{firstname} #{lastname}"
