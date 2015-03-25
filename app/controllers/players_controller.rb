@@ -34,8 +34,9 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-    @player.destroy
-    redirect_to players_path, notice: 'Player was succesfully deleted.'
+    @player.retire = true
+    @player.save
+    redirect_to players_path, notice: 'Player was succesfully moved to retire.'
   end
 
   def rank
