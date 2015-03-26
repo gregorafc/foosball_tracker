@@ -12,8 +12,11 @@ class Match < ActiveRecord::Base
   after_save :rate_update
 
   def rate_update
-    self.home_player.rate
-    self.away_player.rate
+    home = self.home_player.rating
+    away = self.away_player.rating
+
+    self.home_player.rate(away)
+    self.away_player.rate(home)
   end
 
 

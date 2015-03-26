@@ -58,8 +58,8 @@ class Player < ActiveRecord::Base
     wins.count * 3
   end
 
-  def rate
-      self.rating = (points*0.7 + goals*0.1 - matches.count*0.1 + avg_opp_rating*0.1).round(2)
+  def rate(opponent_rating)
+      self.rating = (points*0.7 + goals*0.1 - matches.count*0.1 + opponent_rating*0.1).round(2)
       self.save
   end
 
@@ -67,7 +67,7 @@ class Player < ActiveRecord::Base
     if self.matches != [] 
       tab = home_matches.map(&:away_player_id) + away_matches.map(&:home_player_id)
       tab = tab.uniq
-      tab.map { |player| Player.find(player).rating }.inject(:+) / tab.size
+      (tab.map { |player| Player.find(player).rating }.inject(:+) / tab.size).round(2)
     end
   end
 
