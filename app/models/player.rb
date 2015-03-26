@@ -50,8 +50,28 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def goals_lost_by_win 
+    wins.map(&:looser_score).inject(:+)
+  end
+
+  def goals_lost_by_lose
+    loses.count*10
+  end
+
+  def goals_lost
+    if goals_lost_by_win && goals_lost_by_lose
+      goals_lost_by_win + goals_lost_by_lose
+    else
+      goals_lost_by_win || goals_lost_by_lose
+    end
+  end
+
   def goals_per_game
     (goals / matches.count.to_f).round(2)
+  end
+
+  def goals_lost_per_game
+    (goals_lost / matches.count.to_f).round(2)
   end
 
   def points

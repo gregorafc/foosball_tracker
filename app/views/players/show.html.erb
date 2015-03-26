@@ -64,22 +64,22 @@
 
         <ul class='list-group'>
           <li class='list-group-item'>
-            <span class='badge'><%=  %></span>
+            <span class='badge'><%= @player.goals_lost_by_win %></span>
             Goals lost when win
           </li>
           <li class='list-group-item'>
-            <span class='badge'><%=  %></span>
+            <span class='badge'><%= @player.goals_lost_by_lose %></span>
             Goals lost when lose
             </li>
           <li class='list-group-item active'>
-            <span class='badge'><%=  %></span>
+            <span class='badge'><%= @player.goals_lost %></span>
             Overall
           </li>
         </ul>
 
         <ul class='list-group'>
           <li class='list-group-item active'>
-            <span class='badge'><%=  %></span>
+            <span class='badge'><%= @player.goals_lost_per_game %></span>
             Goals lost per game
           </li>
         </ul>
