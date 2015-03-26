@@ -64,8 +64,9 @@ class Player < ActiveRecord::Base
   end
 
   def avg_opp_rating
-    if matches != [] 
+    if self.matches != [] 
       tab = home_matches.map(&:away_player_id) + away_matches.map(&:home_player_id)
+      tab = tab.uniq
       tab.map { |player| Player.find(player).rating }.inject(:+) / tab.size
     end
   end
