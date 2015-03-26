@@ -15,8 +15,11 @@ class Match < ActiveRecord::Base
     home = self.home_player.rating
     away = self.away_player.rating
 
-    self.home_player.rate(away)
-    self.away_player.rate(home)
+    home_avg = self.home_player.avg_opp_rating
+    away_avg = self.away_player.avg_opp_rating
+
+    self.home_player.rate(away, home_avg)
+    self.away_player.rate(home, away_avg)
   end
 
 
