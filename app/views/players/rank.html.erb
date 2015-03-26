@@ -6,9 +6,12 @@
       <th>#</th>
       <th>First name</th>
       <th>Last name</th>
-      <th>Rating</th>
+      <th class='info'>Rating</th>
       <th>Match played</th>
+      <th>Wins</th>
+      <th>Loses</th>
       <th>Goals</th>
+      <th>Goals lost</th>
       <th>Points</th>
     </tr>
   </thead>
@@ -19,9 +22,12 @@
         <td><%= p "#{n}" %></td>
         <td><%= player.firstname %></td>
         <td><%= player.lastname %></td>
-        <td><%= player.rating %></td>
+        <td class='info'><%= player.rating %></td>
         <td><%= player.matches.count %></td>
+        <td><%= player.wins.count %></td>
+        <td><%= player.loses.count %></td>
         <td><%= player.goals %></td>
+        <td><%= player.goals_lost %></td>
         <td><%= player.points %></td>
         <% n = n + 1 %>
       </tr>
