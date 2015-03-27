@@ -1,0 +1,22 @@
+default: &default
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  adapter: postgresql
+  database: foosball_tracker_dev
+  encoding: unicode
+  host: 
+  username:
+  password:
+
+
+test:
+  <<: *default
+  adapter: postgresql
+  database: foosball_tracker_test
+  encoding: unicode
+  host:
+  username:
+  password:
