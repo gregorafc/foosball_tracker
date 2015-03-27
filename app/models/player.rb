@@ -79,7 +79,7 @@ class Player < ActiveRecord::Base
   end
 
   def rate(opponent_rating, avg)
-      self.rating = (points*0.5 + goals*0.1 - goals_lost*0.1 - matches.count*0.1 + opponent_rating*0.1 + avg*0.1).round(2)
+      self.rating = (points*0.7 + goals*0.05 - goals_lost*0.05 - matches.count*0.05 + opponent_rating*0.05 + avg*0.1).round(2)
       self.save
   end
 
